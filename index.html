@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MRJ Classroom Monitor</title>
+<link rel="stylesheet" href="https://mrjkorea.github.io/mrj-signin/mrj-auth.css">
+<style>
+body{font-family:system-ui,sans-serif;margin:0;background:#111;color:#eee}
+header{padding:10px 12px;display:flex;justify-content:space-between;align-items:center;background:#1c1c1c}
+h1{font-size:18px;margin:0}#meta{font-size:12px;color:#aaa}
+#gate{padding:20px;text-align:center}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;padding:10px}
+@media(min-width:700px){.grid{grid-template-columns:repeat(4,1fr)}}
+.seat{border-radius:12px;padding:10px;min-height:96px;color:#111;word-break:break-word}
+.green{background:#3fbf5f}.yellow{background:#f2c94c}.red{background:#eb5757;color:#fff}.grey{background:#666;color:#ddd}
+.seat b{font-size:20px}.seat .s{font-size:15px;font-weight:600}.seat small{display:block;font-size:12px;opacity:.9;margin-top:4px}
+nav{display:flex;gap:6px;padding:0 10px}nav button{flex:1;padding:8px;border:0;border-radius:8px;background:#333;color:#eee}
+nav button.on{background:#4a7dff}
+table{width:calc(100% - 20px);margin:10px;border-collapse:collapse;font-size:13px}
+td,th{border-bottom:1px solid #333;padding:6px 4px;text-align:left;vertical-align:top}
+input[type=date]{background:#222;color:#eee;border:1px solid #444;border-radius:6px;padding:4px}
+.hide{display:none}
+</style></head>
+<body>
+<header><h1>MRJ 교실 모니터</h1><span id="meta"></span></header>
+<div id="gate">선생님 계정으로 로그인하세요 (Teacher sign-in required).<div id="mrj-signin-mount"></div></div>
+<main id="app" class="hide">
+ <nav><button id="tLive" class="on">Live seats</button><button id="tDay">Daily report</button></nav>
+ <section id="live"><div class="grid" id="grid"></div></section>
+ <section id="day" class="hide">
+  <div style="padding:10px"><input type="date" id="date"></div>
+  <h3 style="margin:10px">Per student (minutes off-task)</h3><table id="dtab"></table>
+  <h3 style="margin:10px">Alerts</h3><table id="atab"></table>
+ </section>
+</main>
+<script src="config.js"></script>
+<script src="https://mrjkorea.github.io/mrj-signin/mrj-auth.js"></script>
+<script src="https://mrjkorea.github.io/mrj-signin/mrj-auth-boot.js" data-mrj-app="classroom-monitor"></script>
+<script src="app.js"></script>
+</body></html>
